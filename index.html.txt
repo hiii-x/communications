@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X Communications | Strategic Brand & Digital Advisory</title>
+    <style>
+        :root {
+            --bg-color: #F5F5F7; /* Apple AirPods Pro style very light grey */
+            --surface-color: #FFFFFF;
+            --text-primary: #1D1D1F;
+            --text-secondary: #86868B;
+            --accent-color: #0066CC;
+            --border-color: #D2D2D7;
+            --max-width: 1060px;
+            --radius-lg: 18px;
+            --radius-sm: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation / Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(245, 245, 247, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-shape {
+            width: 36px;
+            height: 36px;
+            background: var(--text-primary);
+            border-radius: 50%; /* Round shape for logo branding */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .brand-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Main Container */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 120px 1.5rem 80px 1.5rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+        }
+
+        /* Hero / Under Development Banner */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(0, 102, 204, 0.1);
+            color: var(--accent-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.01);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* FAQ Accordion Styling */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--surface-color);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem 2rem;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .faq-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Details */
+        .contact-box {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .contact-details {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-details a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        /* Responsive adjustments for mobile navigation */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            header {
+                padding: 1rem;
+            }
+            main {
+                padding-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Brand Logo -->
+    <header>
+        <div class="nav-logo-wrapper">
+            <div class="logo-shape">X</div>
+            <span class="brand-name">X Communications</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">What is X</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#background">Background</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Landing Hero Section -->
+        <section class="hero">
+            <div class="status-badge">Under Development</div>
+            <h1>Communicate. Connect. Create Impact.</h1>
+            <p>The site is currently under development. Please visit again later.</p>
+        </section>
+
+        <!-- What is X Section -->
+        <section id="about">
+            <h2 class="section-title">What is X</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Connect</h3>
+                    <p>Bridging the gap between your brand and the audiences that matter most, across both human networks and digital ecosystems.</p>
+                </div>
+                <div class="card">
+                    <h3>Partnership</h3>
+                    <p>Working shoulder-to-shoulder as an extension of your leadership team.</p>
+                </div>
+                <div class="card">
+                    <h3>Breakthroughs</h3>
+                    <p>Cutting through the digital noise and engineering algorithm-proof market presence for the future.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2 class="section-title">Services</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Brand Communication & Thought Leadership</h3>
+                    <p>Elevate corporate visibility, amplify executive authority, build employer brand power, and maximize market share of voice.</p>
+                </div>
+                <div class="card">
+                    <h3>Messaging & Architecture</h3>
+                    <p>Define brand positioning, build strategic frameworks, and craft narratives that anchor identity and resonate with audiences.</p>
+                </div>
+                <div class="card">
+                    <h3>Executive & Media Training</h3>
+                    <p>Equip leaders to navigate tough questions, handle high-stakes interviews, and master sensitive stakeholder meetings or public forums.</p>
+                </div>
+                <div class="card">
+                    <h3>Reputation Management</h3>
+                    <p>Safeguard brand, mitigate risks, and steer perception through critical business scenarios.</p>
+                </div>
+                <div class="card">
+                    <h3>Digital Content & GEO Strategy</h3>
+                    <p>Engineering high-performance digital content, structured narratives, and knowledge-base assets designed to rank, be cited, and win visibility across AI search engines.</p>
+                </div>
+                <div class="card">
+                    <h3>Event Management</h3>
+                    <p>Organise high-impact experiences, from high-profile product launches to industry conferences.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Background Section -->
+        <section id="background">
+            <h2 class="section-title">Background</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Two Decades of Impact</h3>
+                    <p>Over 20 years of sharp, hands-on communications leadership, adapting to every era of media evolution.</p>
+                </div>
+                <div class="card">
+                    <h3>Strategic Foundation Meets Digital Execution</h3>
+                    <p>A rare blend of high-level C-suite advisory and modern digital-first content engineering designed for human audiences and AI algorithms alike.</p>
+                </div>
+                <div class="card">
+                    <h3>Enterprise & Entrepreneurial Edge</h3>
+                    <p>Proven experience in scaling startups and steering global strategy for multinational corporations through shifting media landscapes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="card" style="text-align: center; padding: 3rem;">
+                <p style="font-size: 1.1rem; color: var(--text-primary);">References and client testimonials available upon request.</p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h4>What is messaging and architecture, and why does my business need it?</h4>
+                    <p>Messaging architecture creates the foundational vocabulary, tone, and strategic narrative for your brand. It ensures consistency across every touchpoint, aligning internal teams and external audiences around a single, compelling identity.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How does X Communications approach reputation management and risk mitigation?</h4>
+                    <p>We deploy proactive positioning strategies and timely responses to protect your brand equity. By anticipating vulnerabilities and controlling the narrative, we turn potential crises into managed transitions.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What is included in executive and media training programs?</h4>
+                    <p>Our training goes beyond basic interview practice. We prepare leaders for high-stakes media interactions, hostile questioning, crisis communication, and high-visibility public forums with absolute clarity and control.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How does X Communications approach digital communications and GEO (Generative Engine Optimization)?</h4>
+                    <p>We move beyond traditional SEO. We architect high-authority digital content, structured data, and thought leadership assets specifically designed to be understood, cited, and recommended by AI search engines and large language models.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Why is brand communication and thought leadership critical in a crowded market?</h4>
+                    <p>In saturated markets, standard marketing is white noise. Strategic brand communication and thought leadership elevate executives into recognized subject matter experts, building vital market credentials and driving organic trust.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <section id="contact">
+            <h2 class="section-title">Contacts</h2>
+            <div class="contact-box">
+                <h3>Ready to shape the narrative? Let's talk.</h3>
+                <div class="contact-details">
+                    <div><strong>Email:</strong> <a href="mailto:hiiiXcomms@gmail.com">Send an Email</a></div>
+                    <div><strong>WhatsApp username (text only):</strong> [to be insert]</div>
+                    <div><strong>Address:</strong> P. O. Box</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 X Communications. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
