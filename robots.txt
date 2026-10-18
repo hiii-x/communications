@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap link
+Sitemap: https://hiii-x.github.io/communications/sitemap.xml
