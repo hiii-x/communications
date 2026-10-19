@@ -1,4 +1,4 @@
-# X Communications: Website Documentation (v1.6, launch build)
+# X Communications: Website Documentation (v1.8, launch build)
 
 ## 1. Web content
 
@@ -12,7 +12,7 @@
 | The Heart of X | Connect, Partnership, Breakthroughs. The four strokes join as "Connect" appears; the solid, thick X fades in and starts to glow as "Partnership" appears, and the glow swells again for "Breakthroughs". The earlier drag-to-rotate and double-click spin (and their on-screen hint) are removed; only a gentle mouse-parallax tilt remains. |
 | Background | "20+" years figure and three practice cards. The figure flicks upward from 10 to 20, then the "+" pops in. |
 | Testimonials | Intro line: "Hover a glassball to read what people said." 30 remarks in 7 categories (below). Each logo ball shows its category name; on hover it flips to the X logo and a call-out shows the remark. Moving away flips it back to the category name. Under the bubbles: "References and client testimonials available upon request", in the same size as the Background stat caption. |
-| Get in touch | "Ready to communicate with impact. Let's talk." set in the sub-heading typeface over two lines on the left ("Ready to communicate with impact." / "Let's talk."), over a field of drifting crystal particles. On the right, three glass buttons, the same size and font as the nav "Let's talk" button, keep the details hidden until clicked: **Send an Email** reveals the address as a mailto link; **WhatsApp now** reveals a link that opens WhatsApp Web in the browser (`web.whatsapp.com/send?phone=…`) rather than the app. The stored value is the wa.me link with the business number (kept Base64-encoded in the `D` object, never in the visible markup); the script converts it to the WhatsApp Web form; **Post a mail** reveals the address on two lines (PO Box 71764 / Kowloon Central Post Office, Hong Kong). There is no "Reach us" panel, "Open mail app" or "Copy" button. |
+| Get in touch | "Ready to communicate with impact. Let's talk." set in the sub-heading typeface over two lines on the left ("Ready to communicate with impact." / "Let's talk."), over a field of drifting crystal particles. On the right, three glass buttons, the same size and font as the nav "Let's talk" button, keep the details hidden until clicked: **Send an Email** reveals the address as a mailto link; **WhatsApp now** reveals a "Chat on WhatsApp" link using WhatsApp's official click-to-chat format, `https://wa.me/<number>`, so visitors can start a chat without saving the number. On phones it opens the WhatsApp app if installed; otherwise (and on desktop) it shows WhatsApp's own page with a "Continue to chat" step. The link is kept Base64-encoded in the `D` object, never in the visible markup; **Post a mail** reveals the address on two lines (PO Box 71764 / Kowloon Central Post Office, Hong Kong). There is no "Reach us" panel, "Open mail app" or "Copy" button. |
 
 **Testimonial categories:** Brand Comms (7), Messaging (4), Executive Comms (4), Crisis (5), Digital (3), Stakeholder (5), Event (2). Quotes are kept verbatim from the brief. The Pizza Hut messaging ball carries only "impactful messaging"; "exceptional judgement" and "trusted partner" live on their own Crisis and Executive Comms balls.
 
@@ -77,6 +77,8 @@ Single file `index.html`. External: Google Fonts, GSAP 3.12.5 and ScrollTrigger 
 | 1.4 | Hero line centred and hero particles turned into crystals. "Executive Communications & Media Training". Drag-to-rotate removed from The Heart of X. The X now has real thickness. "20+" counts up from 10. Logo balls show the category name, flipping to the logo on hover. Pizza Hut messaging remark shortened. Contact: two-line headline, no "Reach us" panel, nav-sized buttons, mailto, WhatsApp and two-line address reveals. |
 | 1.5 | One size per type tier. Shared left edge for titles and descriptions. Space around text and card heights fitted to content. Right-hand space fixed in The Heart of X. Logo glow starts at "Partnership". Heart of X made CSS-sticky to stop the mobile overlap with Background. Nav slides down after 1.8 s of no scrolling and hides while scrolling. WhatsApp opens WhatsApp Web once a numeric phone number is stored. |
 | 1.6 | Launch build: hero line centred under the headline; "Hover a glassball"; "Jetstar Group executive"; WhatsApp number set; title, description, canonical, Open Graph and Twitter tags finalised; supplied ProfessionalService schema added with generated OfferCatalog and FAQPage schema; every card title and FAQ question is now a real `<h3>`; stray draft comments removed; robots.txt, sitemap.xml, logo and social preview image added. |
+| 1.7 | WhatsApp link switched to the official wa.me click-to-chat format; final clean-up audit repeated and comments tidied. |
+| 1.8 | Google Analytics (gtag.js, G-8R0VXDH2DZ) inserted in the head after the viewport tag; clean-up audit repeated. |
 
 ## 5. Open items before launch
 
@@ -99,6 +101,7 @@ Single file `index.html`. External: Google Fonts, GSAP 3.12.5 and ScrollTrigger 
 | Other | `og:type`, `og:title`, `og:description`, `og:site_name`, `og:locale` (en_HK), `twitter:card` = summary_large_image, `robots` = index,follow,max-image-preview:large, `theme-color` #000000, `color-scheme` dark |
 | Viewport | `width=device-width, initial-scale=1, viewport-fit=cover` |
 | Fonts | Google Fonts: Unbounded 300/500/700, Instrument Sans 400/500/600, Fredoka 400/500/600 |
+| Analytics | Google tag (gtag.js), measurement ID `G-8R0VXDH2DZ`, placed in `<head>` straight after the viewport tag (line 5 onwards) so it loads early. The `async` script loads without blocking the page. |
 | Fallback | `<noscript>` hides the intro overlay and shows the hero lines when JavaScript is off |
 
 ### 6.2 Structured data
@@ -125,7 +128,7 @@ One `<h1>` (the three-line hero headline). Each main section is an `<h2>` (Servi
 | Bubble pit | `pit()` | gravity .5, bounce .52 (floor) / .45 (collisions), pointer push radius r + 70, spawn gap 85 ms, 30 logo balls + 16 faces, radius scale min(1, width / 1000) with a floor of .55 |
 | Logo ball spin | `pit()` | angular speed capped at .035, logo balls damped to .94 |
 | Type tiers | `--t-body`, `--t-h3`, `--t-sm` | see section 2 |
-| Contact details | `D` object | Base64-encoded email link, WhatsApp link and two-line postal address |
+| Contact details | `D` object | Base64-encoded email address, wa.me WhatsApp link and two-line postal address |
 
 ### 6.5 Files to deploy (GitHub root)
 
@@ -145,3 +148,15 @@ Optional: `CNAME` (one line with your custom domain) for GitHub Pages, and an em
 - Update `<lastmod>` in `sitemap.xml` when content changes.
 - Test social previews with the LinkedIn Post Inspector and the Facebook Sharing Debugger after deployment.
 - Test on a real phone and a desktop: hero, Heart of X scroll, Services cards, testimonial bubbles and the three contact buttons.
+
+### 6.7 Release notes: 1.7
+
+- WhatsApp: replaced the unofficial `web.whatsapp.com/send` form (which did not open reliably) with the documented `https://wa.me/<number>` click-to-chat link.
+- Re-ran the clean-up audit: the file starts with `<!DOCTYPE html>` and ends with `</html>`, with no text outside them, no markdown code markers, no tabs, no draft or conversational text, and descriptive comments only. Both JSON-LD blocks parse and both scripts pass a syntax check.
+
+### 6.8 Release notes: 1.8
+
+- Google Analytics added after line 5 of `index.html` (after `<meta charset>` and the viewport tag, before the title). The snippet is unchanged apart from indentation, with Google's standard comment above it.
+- Audit repeated on the final file: starts with `<!DOCTYPE html>`, ends with `</html>`, nothing outside them; no markdown code markers, tabs, draft or conversational text; one `<h1>`; both JSON-LD blocks parse; all three inline scripts pass a syntax check.
+- Privacy reminder: Google Analytics sets cookies and records visitor data. Depending on where visitors are (for example the EU or UK), a cookie notice or consent step may be required. Check the legal position for your audience, and consider adding a privacy notice.
+- To confirm tracking after deployment, open the live site, then check Google Analytics > Reports > Realtime for your visit (it can take a minute to appear).
